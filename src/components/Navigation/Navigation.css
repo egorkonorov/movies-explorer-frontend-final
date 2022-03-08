@@ -1,0 +1,217 @@
+.navigation__menu-ico{
+    width: 44px;
+    height: 44px;
+    visibility: visible;
+    position: absolute;
+    right: 30px;
+    top:20px;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+}
+
+@media screen and (max-width:450px){
+    .navigation__menu-ico{ 
+        right: 18px;
+    }
+}
+
+.navigation__menu-button{
+    border: none;
+    background-color: rgba(32, 32, 32, 1);
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+    bottom:0;
+    height: 100%;
+}
+
+.navigation__close-button{
+    border: none;
+    background-color: rgba(32, 32, 32, 1);
+    visibility: hidden;
+    position: fixed;
+    right: 0;
+    bottom:0;
+    right:22px;
+    top:22px;
+    height: 100%;
+}
+.navigation__overlay_hidden{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+    transition: .3;
+}
+
+.navigation__overlay_visible{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    visibility: visible;
+    z-index: 2;
+    transition: .3;
+}
+
+
+.navigation__menu_hidden{
+    position: fixed;
+    right: 0;
+    bottom:0;
+    height: 100%;
+    width:520px;
+    background-color: rgba(32, 32, 32, 1);
+    visibility: hidden;
+    z-index: 2;
+    transition: 0.3s;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.navigation__menu_visible{
+    position: fixed;
+    right: 0;
+    bottom:0;
+    height: 100%;
+    width:520px;
+    background-color: rgba(32, 32, 32, 1);
+    visibility: visible;
+    z-index: 2;
+    transition: 0.3s;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+
+@media screen and (max-width:750px){
+    .navigation__menu_visible{ 
+        width:100%;
+    }
+}
+
+@media screen and (max-width:750px){
+    .navigation__menu_hidden{ 
+        width:100%;
+    }
+}
+
+@media screen and (max-width:1200px){
+    .navigation__menu-ico{ 
+        visibility: visible;
+    }
+}
+
+.navigation__account-base{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    align-items: center;
+    height: 32px;
+    align-self: center;
+    text-decoration: none;
+    z-index: 3;
+    max-width: 100px;
+    margin-bottom: 50px;
+}
+
+.navigation__account-ico{
+    max-width: 12px;
+    max-height: 14px;
+    margin-right: 7px;
+    margin-left: 12px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.navigation__account-button{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+    padding-top:5px;
+    margin-right: 14px;
+    line-height: 1.12;
+    text-decoration: none;
+    z-index: 5;
+}
+
+.navigation__account-base:hover{
+    opacity: 0.5;
+}
+
+.navigation__links{
+    display: flex;
+    align-self: center;
+    margin-top:141px;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+
+}
+
+.navigation__link{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 28px;
+    text-decoration: none;
+    z-index: 5;
+}
+
+.navigation__link_underline{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 28px;
+    text-decoration: underline;
+    z-index: 5;
+}
+
+
+.navigation__link:hover{
+    opacity: .5;
+}
+
+.navigation__link_underline:hover{
+    opacity: .5;
+}
+
+.navigation__closeButton_hidden{
+
+    visibility: hidden;
+}
+
+.navigation__closeButton_visible{
+    width: 44px;
+    height: 44px;
+    position: fixed;
+    right:22px;
+    top:22px;
+    transition: .3;
+    z-index: 5;
+    cursor: pointer;
+    visibility: visible
+}
+
+
+.navigation__closeButton_visible:hover{
+    transform: scale(1.2);
+}

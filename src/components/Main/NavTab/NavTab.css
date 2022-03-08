@@ -1,0 +1,53 @@
+.navTab{
+    background-color: rgba(39, 39, 39, 1);
+    margin-top: 122px;
+}
+
+.navTab__tabs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    max-width: 276px;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    height: 68px;
+}
+
+@media screen and (max-width:450px){
+    .navTab__tabs{ 
+        max-width: 236px;
+    }
+}
+
+@media screen and (max-width:250px){
+    .navTab__tabs{ 
+        max-width: 200px;
+    }
+}
+
+
+.navtab__link{
+    color:white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.2;
+    text-decoration: underline;
+}
+
+@media screen and (max-width:450px){
+    .navtab__link{ 
+        font-size: 11px;
+    }
+}
+
+.navtab__link:hover{
+    opacity: 0.5;
+}
+.aboutProject__paragraphs{
+    display: flex;
+    flex-direction: row;
+}

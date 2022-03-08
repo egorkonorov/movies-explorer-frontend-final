@@ -1,0 +1,223 @@
+.header{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin:0 auto;
+    max-width: 1280px;
+}
+.header__logo{
+   max-width: 38px;
+   max-height: 38px;
+   margin: 18px 0 18px 30px;
+}
+
+@media screen and (max-width:450px){
+    .header__logo{ 
+        margin: 18px 0 18px 18px;
+    }
+}
+
+.header__userBase{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    margin: 0px 30px 0px 0px;
+}
+
+
+.header__link{
+    color: white;
+    text-decoration: none;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 12px;
+    align-self: center;
+    margin: 0;
+    padding: 0 30px 0 0;
+    border:none;
+    line-height: 1.2;
+}
+
+@media screen and (max-width:450px){
+    .header__link{ 
+        font-size: 10px;
+        padding: 0 14px 0 0;
+    }
+}
+
+
+.header__link:hover{
+    color:rgba(233, 247, 110);
+}
+
+.header__link_disabled{
+    display: none;
+}
+
+.header__button{
+    height: 32px;
+    width: 76px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color:rgba(61, 220, 132, 1);
+    color:black;
+    align-self: center;
+    border:none;
+}
+
+.header__button_disabled{
+    display: none;
+}
+
+@media screen and (max-width:450px){
+    .header__button{ 
+        height: 26px;
+        width: 54px;
+    }
+}
+
+
+
+.header__button:hover{
+    background-color:rgba(233, 247, 110);
+    color:rgba(61, 220, 132, 1);
+}
+.page{
+    background-color:rgba(7, 48, 66, 1);
+    margin: 0;
+    height: 100%;
+}
+.page_black{
+    background-color:rgba(32, 32, 32, 1);
+    margin: 0;
+    height: 100%;
+}
+
+.header__buttonLink{
+    text-decoration: none;
+    color:black;
+    line-height: 1.2;
+    font-size: 12px;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: normal;
+}
+
+@media screen and (max-width:450px){
+    .header__buttonLink{ 
+        font-size: 10px;
+    }
+}
+
+
+.header__films-base{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    visibility: visible;
+
+}
+
+.header__films{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0 16px 0 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header__films:hover{
+    opacity: .8;
+}
+
+@media screen and (max-width:1200px){
+    .header__films-base{ 
+        visibility: hidden;
+    }
+}
+
+
+.header__films_not-picked{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0 16px 0 0;
+}
+
+.header__saved-films{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header__saved-films:hover{
+    opacity: .8;
+}
+
+.header__saved-films_picked{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+
+
+.header__account-base{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    align-items: center;
+    height: 32px;
+    align-self: center;
+    margin-right: 30px;
+    text-decoration: none;
+    visibility: visible;
+}
+
+@media screen and (max-width:1200px){
+    .header__account-base{ 
+        visibility: hidden;
+    }
+}
+
+.header__account-ico{
+    max-width: 12px;
+    max-height: 14px;
+    margin-right: 7px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.header__account-button{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+    padding-top:5px;
+    margin-right: 14px;
+    line-height: 1.12;
+    text-decoration: none;
+}
+
+.header__account-base:hover{
+    opacity: 0.5;
+}

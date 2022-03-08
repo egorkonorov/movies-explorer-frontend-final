@@ -1,0 +1,28 @@
+.preloader{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 166px;
+    margin-bottom: 79px;
+    padding: 0 30px 0 30px
+}
+
+.preloader__button{
+    width: 320px;
+    height:36px;
+    border: 1px solid #424242;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #202020;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.preloader__button:hover{
+    opacity: 0.8;
+    transform: scale(1.05);
+}

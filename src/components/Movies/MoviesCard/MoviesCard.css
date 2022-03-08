@@ -1,0 +1,110 @@
+.moviesCard{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.moviesCard__pic{
+    border-radius: 6px;
+    height:360px;
+    object-fit: cover;
+}
+
+@media screen and (max-width:380px){
+    .moviesCard__pic{ 
+        height:300px;
+    }
+  }
+
+  @media screen and (max-width:335px){
+    .moviesCard__pic{ 
+        height:280px;
+    }
+  }
+
+
+.moviesCard__base{
+    display: grid;
+    grid-template-columns: 80 20%;
+    grid-template-rows: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.moviesCard__name{
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.2;
+    margin-left: 5px;
+    grid-row: 1/1;
+    grid-column: 1/1;
+}
+
+.moviesCard__duration{
+    color: #8B8B8B;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 0.99;
+    background-color: #424242; 
+    width: 52px;
+    height: 18px;
+    border-radius: 2px;
+    text-align: center;
+    margin: 0;
+    padding-top: 6px;
+    align-self:right;
+    grid-row: 1/1;
+    grid-column: 2/2;
+}
+
+.moviesCard__save-button{
+    position: absolute;
+    right:10px;
+    top:10px;
+    border-radius: 10px;
+    border: 1px solid #313131;
+    background-color:#313131;
+    width: 72px;
+    height: 21px;
+    color: white;
+    font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 2;
+    text-align: center;
+}
+
+.moviesCard__pic-unsaved{
+    position: absolute;
+    right:10px;
+    top:10px;
+    border-radius: 10px;
+    border: 1px solid #313131;
+    background-color:#313131;
+    width: 72px;
+    height: 21px;
+    cursor: pointer;
+    background:transparent url(./../../../images/tosave-ico.svg) no-repeat left;
+}
+
+.moviesCard__pic-unsaved:hover{
+    opacity: .8;
+}
+
+.moviesCard__pic-saved{
+    position: absolute;
+    right:10px;
+    top:10px;
+    border-radius: 10px;
+    border: 1px solid #313131;
+    background-color:#313131;
+    width: 21px;
+    height: 21px;
+    background:transparent url(./../../../images/saved-ico.svg) no-repeat left;
+}
