@@ -81,7 +81,7 @@ function Profile(){
                 setCurrentUserName(nameValue)
                 setCurrentUserEmail(emailValue)
                 setProfileErrorSpanClass('profile__error_no-error')
-                setProfileErrorText('Данные успешно изменены')
+                setProfileErrorText('Данные изменены успешно')
                 setTimeout(() => setProfileErrorSpanClass('profile__error_disabled'), 1000);
               })
               .catch((err) => {
