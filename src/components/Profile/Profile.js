@@ -15,14 +15,14 @@ function Profile(){
     const currentUser = React.useContext(CurrentUserContext);
     const [currentUserName, setCurrentUserName] = useState(currentUser.data.name)
     const [currentUserEmail, setCurrentUserEmail] = useState(currentUser.data.email)
-    const [nameValue, setNameValue] = useState('')
-    const [emailValue, setEmailValue] = useState('')
+    const [nameValue, setNameValue] = useState(currentUser.data.name)
+    const [emailValue, setEmailValue] = useState(currentUser.data.email)
     const [profileNameSpanClass, setProfileNameSpanClass] = useState('profile-name__span_inactive')
     const [profileEmailSpanClass, setProfileEmailSpanClass] = useState('profile-email__span_inactive')
-    const [isValidName, setIsValidName] = useState(false)
-    const [isValidEmail, setIsValidEmail] = useState(false)
+    const [isValidName, setIsValidName] = useState(true)
+    const [isValidEmail, setIsValidEmail] = useState(true)
     const [profileButtonClassName, setRegisterButtonClassName] = useState('profile__button-edit_inactive')
-    const [buttonEnabled, setButtonEnabled] = useState(false)
+    const [buttonEnabled, setButtonEnabled] = useState(true)
     const [profileErrorSpanClass, setProfileErrorSpanClass] = useState('profile__error_disabled')
     const [profileErrorText, setProfileErrorText] = useState('')
 
@@ -66,14 +66,6 @@ function Profile(){
             setProfileErrorSpanClass('profile__error_enabled')
             setProfileErrorText('Email и Имя совпадает с уже используемым')
         }
-        else if (currentUser.data.name === nameValue){
-            setProfileErrorSpanClass('profile__error_enabled')
-            setProfileErrorText('Имя совпадает с уже используемым')
-        }
-        else if (currentUser.data.email === emailValue) {
-            setProfileErrorSpanClass('profile__error_enabled')
-            setProfileErrorText('Email совпадает с уже используемым')
-        }
         else {
             mainapi
             .patchUserInfo(jwt, nameValue, emailValue)
@@ -92,8 +84,8 @@ function Profile(){
     } 
 
     function handleExit(){
-        localStorage.removeItem('token')
-        history.push('/login')
+        localStorage.clear()
+        history.push('/')
         window.location.reload()
     }
 
@@ -129,6 +121,7 @@ function Profile(){
                                 required
                                 placeholder={currentUserName}
                                 onChange={handleChangeName}
+                                value={nameValue}
                             >
                             </input>
                             </div>
@@ -146,6 +139,7 @@ function Profile(){
                                 required
                                 placeholder={currentUserEmail}
                                 onChange={handleChangeEmail}
+                                value={emailValue}
                                 >
                             </input>
                             </div>

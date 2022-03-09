@@ -36,6 +36,9 @@ function App() {
       console.log(err);
     })
   }
+ else{
+  history.push('/')
+ } 
 }
 
   useEffect(() => {
@@ -64,7 +67,7 @@ function App() {
     Auth.register(password, email, name)
         .then((res) => {
                 setErrorRegisterClassName('register__error_disabled')
-                history.push('/login')
+                handleLogin (email, password)
                 console.log(res)
         })
         .catch((err) => {

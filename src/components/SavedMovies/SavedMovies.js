@@ -24,7 +24,7 @@ const [responseError, setResponseError] = useState('moviesCardList__responseErro
 const [isOverfilled, setisOverfilled] = useState([]);
 const [emptyCardsClass, setEmptyCardsClass] = useState('moviesCardList__emptyParagraph_disabled')
 const [emptyPreloaderClass, setEmptyPreloaderClass] = useState('preloader_disabled')
-
+const [preloaderClass, setPreloaderClass] = useState('movies_preloader_inactive');
 useEffect(() => {
     if (!wasSearched){
         mainapi
@@ -91,6 +91,7 @@ function handleSearch (searchedMovie, isChecked){
     console.log(isChecked)
         setWasSearched(true)
         setpreloaderNumber(9)
+        handlePreloader(true)
         mainapi
           .getMovies(jwt)
           .then((res) => {
@@ -111,9 +112,22 @@ function handleSearch (searchedMovie, isChecked){
           .catch((err) => {
             console.log(err);
             setResponseError('moviesCardList__responseError_enabled')
+          })
+          .finally(() =>{
+            handlePreloader(false)
           });
           
 }
+
+function handlePreloader(isLoading) {
+    if (isLoading){
+        setPreloaderClass('movies_preloader_active')
+    }
+    else{
+        setPreloaderClass('movies_preloader_inactive')
+    }
+}
+
 
 function editpreloaderNumber (){
     setpreloaderNumber(preloaderNumber + preloaderIncrease)
@@ -139,7 +153,7 @@ function editpreloaderNumber (){
             <SearchForm handleSearch={handleSearch}>
 
             </SearchForm>
-
+            <div className={preloaderClass}></div>
             <MoviesCardList
                 movies={movies}
                 emptyCardsClass={emptyCardsClass}
