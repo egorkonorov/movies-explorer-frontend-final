@@ -25,6 +25,7 @@ function MoviesCardList({movies, emptyCardsClass, preloaderNumber, responseError
             card_id={movie.id}
             card_year={movie.year}
             card_duration={movie.duration}
+            cardId={movie._id} 
             />
           );
         })}

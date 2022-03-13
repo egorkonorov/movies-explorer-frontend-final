@@ -7,6 +7,7 @@ import Navigation from "./../Navigation/Navigation"
 import { CurrentUserContext } from "./../../contexts/CurrentUserContext"
 import mainapi from "./../../utils/MainApi";
 import {useHistory } from 'react-router-dom';
+import * as Auth from './../../utils/Auth';
 
 function Profile(){
 
@@ -37,6 +38,23 @@ function Profile(){
         resetName(e.target.value)
         setProfileErrorSpanClass('profile__error_disabled')
       }  
+
+
+      useEffect(() => {
+        Auth.getContent(jwt).then((res) => {
+            if (res){
+                setCurrentUserName(res.data.name)
+                setCurrentUserEmail(res.data.email)
+                setNameValue(res.data.name)
+                setEmailValue(res.data.email)
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }, [currentUser])
+
+
 
       const resetEmail= useCallback(
         (value) => {
@@ -119,7 +137,6 @@ function Profile(){
                                 maxLength="30"
                                 name="name"
                                 required
-                                placeholder={currentUserName}
                                 onChange={handleChangeName}
                                 value={nameValue}
                             >
@@ -137,7 +154,6 @@ function Profile(){
                                 maxLength="100"
                                 name="email"
                                 required
-                                placeholder={currentUserEmail}
                                 onChange={handleChangeEmail}
                                 value={emailValue}
                                 >

@@ -187,7 +187,6 @@
 
 
 .profile-name__span_active{
-    visibility: visible;
     color: rgba(238, 52, 101, 1);
     font-family:"Inter", 'Arial', 'Helvetica', sans-serif;
     font-weight: 400;
@@ -199,3 +198,4 @@
 .profile-name__span_inactive{
     display: none;
 }
+

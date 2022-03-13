@@ -29,7 +29,7 @@ function MoviesCard({
                 <img className="moviesCard__pic" src={card_src} alt={card_alt}></img>
                 <div className="moviesCard__base">
                     <p className="moviesCard__name">{card_name}</p>
-                    <p className="moviesCard__duration">{card_duration}</p>
+                    <p className="moviesCard__duration">{`${Math.floor(card_duration/60)}ч ${card_duration%60} м`}</p>
                 </div>
             </div>
 
