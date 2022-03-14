@@ -12,9 +12,13 @@ import ProtectedRoute from "./../ProtectedRoute";
 import { CurrentUserContext } from "./../../contexts/CurrentUserContext";
 
 function App() {
+
+  if (!localStorage.getItem('loggedIn')) {
+    localStorage.setItem('loggedIn', JSON.stringify(false))
+ } 
   const history = useHistory()
-  const [loggedIn, setLogginIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState('')
+
+  const [currentUser, setCurrentUser] = useState('') 
   const [errorRegisterClassName, setErrorRegisterClassName] = useState('register__error_disabled')
   const [errorRegistrationText, setErrorRegistrationText] = useState('')
   const [errorLoginClassName, setErrorLoginClassName] = useState('login__error_disabled')
@@ -26,10 +30,8 @@ function App() {
   if (jwt){
     Auth.getContent(jwt).then((res) => {
       if (res){
-        setLogginIn(true)
+        localStorage.setItem('loggedIn', JSON.stringify(true))
         setCurrentUser(res)
-        history.push('/movies')
-        console.log(loggedIn)
       }
     })
     .catch((err) => {
@@ -64,7 +66,7 @@ function App() {
     Auth.register(password, email, name)
         .then((res) => {
                 setErrorRegisterClassName('register__error_disabled')
-                history.push('/login')
+                handleLogin (email, password)
                 console.log(res)
         })
         .catch((err) => {
@@ -79,25 +81,20 @@ function App() {
     <>
     <CurrentUserContext.Provider value={currentUser}>
     <Switch>
-    <Route exact path="/">
-        <Main loggedIn={loggedIn}>
-          
-        </Main>
-    </Route>
 
   <ProtectedRoute
           path="/movies"
-          loggedIn={loggedIn}
+          loggedIn={JSON.parse(localStorage.getItem('loggedIn'))}
           component={Movies}
     />
   <ProtectedRoute
           path="/saved-movies"
-          loggedIn={loggedIn}
+          loggedIn={JSON.parse(localStorage.getItem('loggedIn'))}
           component={SavedMovies}
     />
     <ProtectedRoute
           path="/profile"
-          loggedIn={loggedIn}
+          loggedIn={JSON.parse(localStorage.getItem('loggedIn'))}
           component={Profile}
     />      
 
@@ -112,6 +109,12 @@ function App() {
 
         </Login>
       </Route >
+
+      <Route exact path="/">
+        <Main loggedIn={JSON.parse(localStorage.getItem('loggedIn'))}>
+          
+        </Main>
+      </Route>
 
       <Route path="*">
         <Error404>

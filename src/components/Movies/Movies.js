@@ -12,8 +12,10 @@ import moviesapi from "./../../utils/MoviesApi";
 
 function Movies(){
 
-
-const [movies, setMovies] = useState([]);
+ if (!localStorage.getItem('movies')) {
+    localStorage.setItem('movies', JSON.stringify([]))
+ }   
+const [movies, setMovies] = useState(JSON.parse(localStorage.getItem('movies')));
 const [preloaderNumber, setpreloaderNumber] = useState(0);
 const [preloaderIncrease, setpreloaderIncrease] = useState(0);
 const [isEmpty, setIsEmpty] = useState(false);
@@ -22,7 +24,7 @@ const [responseError, setResponseError] = useState('moviesCardList__responseErro
 const [isOverfilled, setisOverfilled] = useState([]);
 const [emptyCardsClass, setEmptyCardsClass] = useState('moviesCardList__emptyParagraph_disabled')
 const [emptyPreloaderClass, setEmptyPreloaderClass] = useState('preloader_disabled')
-
+const [preloaderClass, setPreloaderClass] = useState('movies_preloader_inactive');
 useEffect(() => {
     if (window.innerWidth < 480) {
         setpreloaderNumber(5)
@@ -56,25 +58,43 @@ useEffect(() => {
 
 function handleSearch (searchedMovie, isChecked){
         setpreloaderNumber(9)
+        handlePreloader(true)
         moviesapi
           .getMovies()
           .then((res) => {
+            localStorage.removeItem('movies');
+            localStorage.removeItem('checkbox');
+            localStorage.setItem('checkbox', JSON.stringify(isChecked));
             const array = res.filter((film) => film.nameRU.toLowerCase().includes(searchedMovie.toLowerCase()))
             if(isChecked){
                 const finalArray = movies.filter((film) => film.duration < 40)
                 setMovies(finalArray)
+                localStorage.setItem('movies', JSON.stringify(finalArray));
                 resetIsEmpty(finalArray)
             }
             else{
                 setMovies(array)
+                localStorage.setItem('movies', JSON.stringify(array));
                 resetIsEmpty(array)
             }
           })
           .catch((err) => {
             console.log(err);
             setResponseError('moviesCardList__responseError_enabled')
+          })
+          .finally(() =>{
+            handlePreloader(false)
           });
           
+}
+
+function handlePreloader(isLoading) {
+    if (isLoading){
+        setPreloaderClass('movies_preloader_active')
+    }
+    else{
+        setPreloaderClass('movies_preloader_inactive')
+    }
 }
 
 function editpreloaderNumber (){
@@ -101,7 +121,7 @@ function editpreloaderNumber (){
             <SearchForm handleSearch={handleSearch}>
 
             </SearchForm>
-
+            <div className={preloaderClass}></div>
             <MoviesCardList
                 movies={movies}
                 emptyCardsClass={emptyCardsClass}

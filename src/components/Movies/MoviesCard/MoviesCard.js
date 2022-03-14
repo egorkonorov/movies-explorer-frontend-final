@@ -14,11 +14,12 @@ function MoviesCard({
     card_nameEN,
     card_thumbnail,
     card_id,
-    card_year}){
+    card_year, cardId}){
     const currentUser = React.useContext(CurrentUserContext);
     const jwt = localStorage.getItem('token');
     const [cardSavedClass, setCardSavedClass] = useState('moviesCard__pic-unsaved')
     const [isEqualMovies, setisEqualMovies] = useState(false)
+    const [currentUserMovies, setCurrentUserMovies] = useState([])
 
     useEffect(() => {
         mainapi.getMovies(jwt)
@@ -27,13 +28,14 @@ function MoviesCard({
                 const currentUserMovies = res.data.filter(function (item) {
                     return item.owner === currentUser.data._id
                 });
+                setCurrentUserMovies(currentUserMovies)
                 setisEqualMovies(currentUserMovies.some(function (item) {
                     return item.movieId === card_id;
                 })
                 )
             })
             setCardSavedClass(`${isEqualMovies ? 'moviesCard__pic-saved': 'moviesCard__pic-unsaved'}` )
-    }, [isEqualMovies]);
+    }, [cardSavedClass, isEqualMovies]);
 
 
     function onCardSaveClck(){
@@ -62,6 +64,17 @@ function MoviesCard({
            }
            else {
                console.log('Уже есть')
+               const currentUserMovie = currentUserMovies.filter(function (item) {
+                return item.movieId === card_id
+                });
+               mainapi.deleteMovie(jwt, currentUserMovie[0]._id)
+                .then((res) => {
+                    console.log(res)
+                    setCardSavedClass('moviesCard__pic-unsaved')
+                })
+                .catch((err) => {
+                    console.log(err);
+                    });
            }
     }
 
@@ -74,7 +87,7 @@ function MoviesCard({
                 <img className="moviesCard__pic" src={card_src} alt={card_alt}></img>
                 <div className="moviesCard__base">
                     <p className="moviesCard__name">{card_name}</p>
-                    <p className="moviesCard__duration">{card_duration}</p>
+                    <p className="moviesCard__duration">{`${Math.floor(card_duration/60)}ч ${card_duration%60} м`}</p>
                 </div>
             </div>
 
